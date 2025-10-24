@@ -6,10 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - name: Set up Node
-        uses: actions/setup-node@v6
-        with:
-          node-version: 24
       - name: Install dependencies
         run: |
           cd 04-practice-project
@@ -24,10 +20,6 @@ jobs:
     needs: lint
     steps:
       - uses: actions/checkout@v5
-      - name: Set up Node
-        uses: actions/setup-node@v6
-        with:
-          node-version: 24
       - name: Install dependencies
         run: |
           cd 04-practice-project
@@ -42,10 +34,6 @@ jobs:
     needs: test
     steps:
       - uses: actions/checkout@v5
-      - name: Set up Node
-        uses: actions/setup-node@v6
-        with:
-          node-version: 24
       - name: Install dependencies
         run: |
           cd 04-practice-project
