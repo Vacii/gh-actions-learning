@@ -14,4 +14,4 @@ jobs:
           body: |
             Thank you for opening this issue! We will look into it as soon as possible.
       - name: Echo issue title
-        run: echo "Issue Title: ${{ github.event.issue.title }}"
+        run: echo "Issue Title; ${{ github.event.issue.title }}"
