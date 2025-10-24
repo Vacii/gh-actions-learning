@@ -1,5 +1,7 @@
 name: Issue Workflow
-on: issues
+on:
+  issues:
+    types: [opened]
 
 jobs:
   comment-on-issue:
