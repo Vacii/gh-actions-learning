@@ -1,0 +1,60 @@
+name: Build and Test
+on: [push, workflow_dispatch]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - name: Install dependencies
+        run: |
+          cd 04-practice-project
+          npm install
+      - name: Lint code
+        run: |
+          cd 04-practice-project
+          npm run lint
+
+  test:
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - uses: actions/checkout@v5
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - name: Install dependencies
+        run: |
+          cd 04-practice-project
+          npm install
+      - name: Run tests
+        run: |
+          cd 04-practice-project
+          npm test
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v5
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - name: Install dependencies
+        run: |
+          cd 04-practice-project
+          npm install
+      - name: Build project
+        run: |
+          cd 04-practice-project
+          npm run build
+      - name: Deploy project
+        run: |
+          cd 04-practice-project
+          echo "Deploying project..."

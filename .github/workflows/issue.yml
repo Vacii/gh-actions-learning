@@ -1,0 +1,15 @@
+name: Issue Workflow
+on: issues
+
+jobs:
+  comment-on-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment on issue
+        uses: peter-evans/create-or-update-comment@v5
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            Thank you for opening this issue! We will look into it as soon as possible.
+      - name: Echo issue title
+        run: echo "Issue Title: ${{ github.event.issue.title }}"
